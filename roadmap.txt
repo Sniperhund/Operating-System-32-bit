@@ -1,0 +1,6 @@
+Todo:
+    - Fix 32-bit version of operating system...
+
+    - Setup filesystem
+    - Setup permission system
+    - Setup interrupts
