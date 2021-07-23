@@ -4,3 +4,4 @@ Todo:
     - Setup filesystem
     - Setup permission system
     - Setup interrupts
+    - Setup keyboard input
