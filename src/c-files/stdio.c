@@ -17,24 +17,24 @@ void printf(char *format, ...)
             char mychar2 = *p;
             switch (mychar2)
             {
-            case 'd':
-            {
-                int x = va_arg(L, int);
-                char buffer[12];
-                itoa(x, buffer);
-                printf("%s", buffer);
-            }
-            break;
-            case 's':
-            {
-                char *s = va_arg(L, char*);
-                while (*s != 0)
+                case 'd':
                 {
-                    term_putc(*s);
-                    s++;
+                    int x = va_arg(L, int);
+                    char buffer[12];
+                    itoa(x, buffer);
+                    printf("%s", buffer);
                 }
-            }
-            break;
+                break;
+                case 's':
+                {
+                    char *s = va_arg(L, char*);
+                    while (*s != 0)
+                    {
+                        term_putc(*s);
+                        s++;
+                    }
+                }
+                break;
             }
         }
         else
