@@ -1,5 +1,5 @@
 Todo:
-    - Fix 32-bit version of operating system...
+    - Fix 32-bit version of the operating system
 
     - Setup filesystem
     - Setup permission system
