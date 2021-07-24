@@ -24,7 +24,7 @@ list=("")
 for FILE in *; do
     currentFile=$(echo "$FILE" | cut -f 1 -d '.')
     cd $dir/build/assembly
-    nasm -f elf64 $dir/src/assembly/$FILE -o $currentFile.o;
+    nasm -f elf32 $dir/src/assembly/$FILE -o $currentFile.o;
 done
 
 cd $dir/src/c-files
@@ -34,7 +34,7 @@ for FILE in *; do
     if [ "${FILE##*.}" = "c" ]; then
         currentFile=$(echo "$FILE" | cut -f 1 -d '.')
         cd $dir/build/c-files
-        $GCC -c -I $dir/src/header-files -ffreestanding $dir/src/c-files/$FILE -o $currentFile.o;
+        $GCC -m32 -mno-sse -mno-sse2 -c -I $dir/src/header-files -ffreestanding $dir/src/c-files/$FILE -o $currentFile.o;
     fi
 done
 
@@ -45,7 +45,7 @@ for FILE in *; do
     if [ "${FILE##*.}" = "c" ]; then
         currentFile=$(echo "$FILE" | cut -f 1 -d '.')
         cd $dir/build/kernel
-        $GCC -c -I $dir/src/header-files -ffreestanding $dir/src/kernel/$FILE -o $currentFile.o;
+        $GCC -m32 -mno-sse -mno-sse2 -c -I $dir/src/header-files -ffreestanding $dir/src/kernel/$FILE -o $currentFile.o;
     fi
 done
 
@@ -73,5 +73,5 @@ done
 cd $dir
 
 echo ${list[*]}
-$LD -n -o iso/boot/kernel.bin -T linker.ld ${list[*]}
+$LD -m elf_i386 -n -o iso/boot/kernel.bin -T linker.ld ${list[*]}
 grub-mkrescue /usr/lib/grub/i386-pc -o kernel.iso iso

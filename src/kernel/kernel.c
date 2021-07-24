@@ -4,5 +4,10 @@
 void kernel_main()
 {
     screen_init();
-    printf("After like 100 years finally everything works except the console color!");
+    //screen_print_char('H');
+    //screen_print_char('E');
+    //screen_print_char('L');
+    //screen_print_char('L');
+    //screen_print_char('O');
+    printf("After like 100 years finally \neverything works except the console color!");
 }
