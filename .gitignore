@@ -1,2 +1,3 @@
-build/
+kernel.iso
+build
 iso/boot/kernel.bin
