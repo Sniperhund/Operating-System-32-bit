@@ -2,3 +2,5 @@ build/
 iso/boot/kernel.bin
 *.o
 kernel.iso
+*.o
+.vscode
