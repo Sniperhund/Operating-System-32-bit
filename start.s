@@ -1,3 +1,8 @@
+/*
+	This is not in the src dir so will not be built!
+	So this is not important!
+*/
+
 .extern kernel_main
 
 .global start
