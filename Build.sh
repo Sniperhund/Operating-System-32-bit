@@ -18,7 +18,7 @@ list=("")
 for FILE in *; do
     currentFile=$(echo "$FILE" | cut -f 1 -d '.')
     cd /root/env/build/assembly
-    nasm -f elf64 /root/env/src/assembly/$FILE -o $currentFile.o;
+    nasm -f elf32 /root/env/src/assembly/$FILE -o $currentFile.o;
 done
 
 cd /root/env/src/c-files
@@ -28,7 +28,7 @@ for FILE in *; do
     if [ "${FILE##*.}" = "c" ]; then
         currentFile=$(echo "$FILE" | cut -f 1 -d '.')
         cd /root/env/build/c-files
-        x86_64-elf-gcc -c -I /root/env/src/header-files -ffreestanding /root/env/src/c-files/$FILE -o $currentFile.o;
+        x86_64-elf-gcc -m32 -mno-sse -mno-sse2 -c -I /root/env/src/header-files -ffreestanding /root/env/src/c-files/$FILE -o $currentFile.o;
     fi
 done
 
@@ -39,7 +39,7 @@ for FILE in *; do
     if [ "${FILE##*.}" = "c" ]; then
         currentFile=$(echo "$FILE" | cut -f 1 -d '.')
         cd /root/env/build/kernel
-        x86_64-elf-gcc -c -I /root/env/src/header-files -ffreestanding /root/env/src/kernel/$FILE -o $currentFile.o;
+        x86_64-elf-gcc -m32 -mno-sse -mno-sse2 -c -I /root/env/src/header-files -ffreestanding /root/env/src/kernel/$FILE -o $currentFile.o;
     fi
 done
 
@@ -67,5 +67,5 @@ done
 cd /root/env
 
 echo ${list[*]}
-x86_64-elf-ld -n -o iso/boot/kernel.bin -T linker.ld ${list[*]}
+x86_64-elf-ld -m elf_i386 -n -o iso/boot/kernel.bin -T linker.ld ${list[*]}
 grub-mkrescue /usr/lib/grub/i386-pc -o kernel.iso iso
