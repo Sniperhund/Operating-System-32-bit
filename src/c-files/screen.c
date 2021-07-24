@@ -54,6 +54,6 @@ void screen_print_char(char c)
 
 void screen_print_str(const char* str)
 {
-	for (size_t i = 0; str[i] != '\0'; i ++) // Keep placing characters until we hit the null-terminating character ('\0')
+	for (size_t i = 0; str[i] != '\0'; i ++)
 		screen_print_char(str[i]);
 }
