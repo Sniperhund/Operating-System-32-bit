@@ -17,8 +17,8 @@ stack_bottom:
 stack_top:
 
 section .text
-global _start:function (_start.end - _start)
-_start:
+global start
+start:
     mov esp, stack_top
 
     extern kernel_main

@@ -8,7 +8,7 @@ int term_col = 0;
 int term_row = 0;
 uint8_t term_color = 0x0F;
 
-void term_init()
+void screen_init()
 {
     for (int col = 0; col < VGA_COLS; col++)
     {
@@ -20,7 +20,7 @@ void term_init()
     }
 }
 
-void term_putc(char c)
+void screen_print_char(char c)
 {
     switch (c)
     {
@@ -50,4 +50,10 @@ void term_putc(char c)
         term_col = 0;
         term_row = 0;
     }
+}
+
+void screen_print_str(const char* str)
+{
+	for (size_t i = 0; str[i] != '\0'; i ++) // Keep placing characters until we hit the null-terminating character ('\0')
+		screen_print_char(str[i]);
 }

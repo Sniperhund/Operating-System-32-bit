@@ -30,7 +30,7 @@ void printf(char *format, ...)
                     char *s = va_arg(L, char*);
                     while (*s != 0)
                     {
-                        term_putc(*s);
+                        screen_print_char(*s);
                         s++;
                     }
                 }
@@ -39,7 +39,7 @@ void printf(char *format, ...)
         }
         else
         {
-            term_putc(*p);
+            screen_print_char(*p);
         }
         p++;
     }

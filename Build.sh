@@ -1,9 +1,10 @@
-echo "Building"
-
-for i in 1 2 3 4 5 6 7 8 9 10
+for i in {1..50}]
 do
   echo " "
 done
+
+echo "Building"
+sleep 1
 
 [ ! -d "/root/env/build/assembly" ] && mkdir -p /root/env/build/assembly
 [ ! -d "/root/env/build/c-files" ] && mkdir -p /root/env/build/c-files

@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "stdio.h"
 
-void term_init();
-void term_putc(char c);
-void term_print(const char *str);
+void screen_init();
+void screen_print_char(char c);
+void screen_print_str(const char *str);

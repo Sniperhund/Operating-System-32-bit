@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "stdio.h"
 
 char *itoa(int i, char b[]);
 int strlen(const char *format);

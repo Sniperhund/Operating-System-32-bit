@@ -25,7 +25,7 @@ char *itoa(int i, char b[])
     return b;
 }
 
-int strlen(const char *format)
+int strlen(char *format)
 {
     char *p = format;
     int num;
@@ -58,7 +58,7 @@ int atoi(char* str) {
 }
 
 void inttohex(uint8_t num) {
-    char hex;
+    char *hex;
     switch (num)
     {
         case 0:
