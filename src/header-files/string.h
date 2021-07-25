@@ -9,3 +9,4 @@
 char *itoa(int i, char b[]);
 int strlen(const char *format);
 void inttohex(uint8_t num);
+void *memcpy(void *dest, const void *src, size_t size);

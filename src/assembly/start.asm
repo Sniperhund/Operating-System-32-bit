@@ -6,6 +6,7 @@ CHECKSUM equ -(MAGIC + FLAGS)   ; checksum of above, to prove we are multiboot
 
 section .multiboot
 align 4
+    ; do something with multiboot
     dd MAGIC
     dd FLAGS
     dd CHECKSUM
@@ -16,11 +17,24 @@ stack_bottom:
     resb 16384 ; 16 KiB
 stack_top:
 
+section .rodata
+gdt:
+    dq 0
+.code: equ $ - gdt
+    dq (1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53)
+.data: equ $ - gdt
+    dq (1<<44) | (1<<47) | (1<<41)
+.pointer:
+    dw .pointer - gdt - 1
+    dq gdt
+
+
 section .text
 global start
 start:
     mov esp, stack_top
 
+    lgdt [gdt.pointer]
     extern kernel_main
     call kernel_main
 

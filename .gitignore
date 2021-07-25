@@ -5,3 +5,5 @@ kernel.iso
 *.o
 .vscode
 .idea
+debug.log
+.debug.log.swp

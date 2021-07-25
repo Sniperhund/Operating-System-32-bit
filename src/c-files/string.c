@@ -1,5 +1,6 @@
 #include "string.h"
 #include <stdarg.h>
+#include "idt.h"
 
 char *itoa(int i, char b[])
 {
@@ -128,4 +129,18 @@ void inttohex(uint8_t num)
         printf("This is not a number that can be converted to hex");
         break;
     }
+}
+
+void *memcpy(void *dest, const void *src, size_t len)
+{
+    int i = 0;
+    const char *s = src;
+    char *d = dest;
+    while (len--) {
+        d[i] = s[i];
+        i++;
+    }
+    test();
+
+    return dest;
 }

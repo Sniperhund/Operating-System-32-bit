@@ -1,8 +1,9 @@
+#pragma once
 //
 // Created by lucas on 7/25/21.
 //
 
-#ifndef OPERATING_SYSTEM_32_BIT_INTERRUPT_H
-#define OPERATING_SYSTEM_32_BIT_INTERRUPT_H
+#define INTGATE 0xE
+#define TRAPGATE 0xF
 
-#endif //OPERATING_SYSTEM_32_BIT_INTERRUPT_H
+void interrupt_handler(void);

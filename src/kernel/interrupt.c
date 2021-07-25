@@ -3,3 +3,7 @@
 //
 
 #include "interrupt.h"
+
+void interrupt_handler(void) {
+    printf("interrupt was called\n");
+}

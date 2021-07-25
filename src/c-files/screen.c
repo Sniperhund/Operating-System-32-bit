@@ -12,37 +12,27 @@ void screen_init()
 {
     term_col = 0;
     term_row = 0;
-    for (int col = 0; col < VGA_COLS; col++)
-    {
-        /*for (int row = 0; row < VGA_ROWS; row++)
-        {
-            const size_t index = (VGA_COLS * row) + col;
-            //vga_buffer[index] = ((uint16_t)term_color << 8) | ' ';
-        }*/
-    }
 }
 
 void screen_print_char(char c)
 {
     switch (c)
     {
-    case '\n':
-    {
-        term_col = 0;
-        term_row++;
-        break;
-    }
+        case '\n':
+        {
+            term_col = 0;
+            term_row++;
+            break;
+        }
 
-    default:
-    {
-        const size_t index = (VGA_COLS * term_row) + term_col;
-        uint16_t val = ((uint16_t)term_color << 8) | c;
-        asm("nop");
-        *(vga_buffer + index) = val;
-        asm("nop");
-        term_col++;
-        break;
-    }
+        default:
+        {
+            const size_t index = (VGA_COLS * term_row) + term_col;
+            uint16_t val = ((uint16_t)term_color << 8) | c;
+            *(vga_buffer + index) = val;
+            term_col++;
+            break;
+        }
     }
     if (term_col >= VGA_COLS)
     {
