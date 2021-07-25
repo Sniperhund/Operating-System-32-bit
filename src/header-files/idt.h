@@ -1,0 +1,8 @@
+//
+// Created by lucas on 7/25/21.
+//
+
+#ifndef OPERATING_SYSTEM_32_BIT_IDT_H
+#define OPERATING_SYSTEM_32_BIT_IDT_H
+
+#endif //OPERATING_SYSTEM_32_BIT_IDT_H
