@@ -25,7 +25,7 @@ char *itoa(int i, char b[])
     return b;
 }
 
-int strlen(char *format)
+int strlen(const char *format)
 {
     char *p = format;
     int num;
