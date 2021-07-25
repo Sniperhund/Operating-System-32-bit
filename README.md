@@ -23,4 +23,4 @@ To leave the build env, enter `exit`
 ## Emulate
 
 Enter this:
-  - `qemu-system-x86_64 -cdrom dist/x86/kernel.iso -L "C:\Program Files\qemu"`
+  - `qemu-system-x86_64 -cdrom dist/x86/kernel.iso`
