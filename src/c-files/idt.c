@@ -38,6 +38,7 @@ void test() {
 
 void init_idt(void)
 {
+    __asm__("cli");
     /* Init irq */
     for (int i = 0; i < IDTSIZE; i++)
         init_idt_desc(0x08, (uint32_t) interrupt_handler, INTGATE, &kidt[i]);
@@ -72,7 +73,6 @@ void init_idt(void)
     memcpy((char *) kidtr.base, (char *) kidt, kidtr.limite);
 
     /* Load the IDTR registry */
-    __asm__("cli");
     __asm__("lidt (kidtr)");
     __asm__("sti");
 }
